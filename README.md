@@ -13,3 +13,11 @@ Resolving dependencies...
 Bundle complete! 1 Gemfile dependency, 12 gems now installed.
 Bundled gems are installed into `./vendor/bundle`
 ```
+
+## Hosts
+
+```
+192.168.10.191 framy
+192.168.10.192 spotty
+192.168.10.193 painty
+```
