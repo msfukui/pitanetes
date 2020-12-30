@@ -2,6 +2,8 @@ GEM
   remote: https://rubygems.org/
   specs:
     ansi (1.5.0)
+    bcrypt_pbkdf (1.0.1)
+    ed25519 (1.2.4)
     hashie (4.1.0)
     hocho (0.3.7)
       hashie
@@ -28,9 +30,12 @@ GEM
     thor (1.0.1)
 
 PLATFORMS
+  ruby
   x86_64-darwin-20
 
 DEPENDENCIES
+  bcrypt_pbkdf
+  ed25519
   hocho
 
 BUNDLED WITH
