@@ -2,15 +2,8 @@ GEM
   remote: https://rubygems.org/
   specs:
     ansi (1.5.0)
-    bcrypt_pbkdf (1.0.1)
-    ed25519 (1.2.4)
     hashie (4.1.0)
-    hocho (0.3.7)
-      hashie
-      itamae
-      net-ssh (>= 4.1.0)
-      thor
-    itamae (1.11.1)
+    itamae (1.12.0)
       ansi
       hashie
       schash (~> 0.1.0)
@@ -22,21 +15,18 @@ GEM
     net-telnet (0.1.1)
     schash (0.1.2)
     sfl (2.3)
-    specinfra (2.82.22)
+    specinfra (2.82.23)
       net-scp
       net-ssh (>= 2.7)
       net-telnet (= 0.1.1)
       sfl
-    thor (1.0.1)
+    thor (1.1.0)
 
 PLATFORMS
-  ruby
   x86_64-darwin-20
 
 DEPENDENCIES
-  bcrypt_pbkdf
-  ed25519
-  hocho
+  itamae
 
 BUNDLED WITH
    2.2.3

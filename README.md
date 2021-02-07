@@ -21,3 +21,9 @@ Bundled gems are installed into `./vendor/bundle`
 192.168.10.192 spotty
 192.168.10.193 painty
 ```
+
+## Apply servers
+
+```
+$ bundle exec itamae ssh -h [framy|spotty|painty] -u ubuntu -j nodes/[framy|spotty|painty].json roles/default.rb
+```
