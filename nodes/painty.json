@@ -1,5 +1,6 @@
 {
   "host": {
-    "name": "painty"
+    "name": "painty",
+    "user": "ubuntu"
   }
 }

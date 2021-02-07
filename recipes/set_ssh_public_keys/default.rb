@@ -2,17 +2,13 @@
 
 directory '.ssh' do
   action :create
-  path '/home/ubuntu/.ssh'
+  path "/home/#{node[:host][:user]}/.ssh"
   mode '700'
-  owner 'ubuntu'
-  group 'ubuntu'
 end
 
 remote_file 'authorized_keys' do
   action :create
-  path '/home/ubuntu/.ssh/authorized_keys'
+  path "/home/#{node[:host][:user]}/.ssh/authorized_keys"
   source './files/.ssh/authorized_keys'
   mode '600'
-  owner 'ubuntu'
-  group 'ubuntu'
 end

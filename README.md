@@ -25,5 +25,11 @@ Bundled gems are installed into `./vendor/bundle`
 ## Apply servers
 
 ```
-$ bundle exec itamae ssh -h [framy|spotty|painty] -u ubuntu -j nodes/[framy|spotty|painty].json roles/default.rb
+$ bundle exec itamae ssh -h framy -u ubuntu -j nodes/framy.json roles/default.rb
+ INFO : Starting Itamae...
+ INFO : Loading node data from /Users/msfukui/projects/pitanetes/nodes/framy.json...
+"os_version": { "platform": "ubuntu", "version": "20.04", "hostname": "ubuntu"}
+ INFO : Recipe: /Users/msfukui/projects/pitanetes/roles/default.rb
+ INFO :   Recipe: /Users/msfukui/projects/pitanetes/recipes/print_os_version/default.rb
+ INFO :   Recipe: /Users/msfukui/projects/pitanetes/recipes/set_ssh_public_keys/default.rb
 ```
