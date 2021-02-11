@@ -10,7 +10,6 @@ $ bundle install
 Fetching gem metadata from https://rubygems.org/.....
 Resolving dependencies...
 ...
-Bundle complete! 1 Gemfile dependency, 12 gems now installed.
 Bundled gems are installed into `./vendor/bundle`
 ```
 
@@ -28,12 +27,12 @@ Set with Wi-Fi router, etc.
 
 ```
 $ bundle exec itamae ssh -h framy -u ubuntu -j nodes/framy.json roles/default.rb
- INFO : Starting Itamae...
+ INFO : Starting Itamae... 
  INFO : Loading node data from /Users/msfukui/projects/pitanetes/nodes/framy.json...
-"os_version": { "platform": "ubuntu", "version": "20.04", "hostname": "ubuntu"}
  INFO : Recipe: /Users/msfukui/projects/pitanetes/roles/default.rb
- INFO :   Recipe: /Users/msfukui/projects/pitanetes/recipes/print_os_version/default.rb
  INFO :   Recipe: /Users/msfukui/projects/pitanetes/recipes/set_ssh_public_keys/default.rb
+ INFO :   Recipe: /Users/msfukui/projects/pitanetes/recipes/delete_default_password/default.rb
+...
 ```
 
 ## Reference
@@ -81,3 +80,5 @@ $ bundle exec itamae ssh -h framy -u ubuntu -j nodes/framy.json roles/default.rb
     c.f. http://otake.knowd2.com/drupal-rotake/?q=node/203
 
     英語版からは該当の記述は削除されていました。(2021-02-11)
+
+* flannel https://github.com/coreos/flannel
