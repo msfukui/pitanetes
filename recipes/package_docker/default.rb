@@ -50,3 +50,7 @@ end
     action :install
   end
 end
+
+execute 'Hold docker\'s version' do
+  command 'sudo apt-mark hold docker-ce docker-ce-cli containerd.io'
+end
