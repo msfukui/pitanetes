@@ -1,6 +1,7 @@
 {
   "host": {
     "name": "framy",
-    "user": "ubuntu"
+    "user": "ubuntu",
+    "timezone": "Asia/Tokyo"
   }
 }

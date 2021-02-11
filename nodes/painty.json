@@ -1,6 +1,7 @@
 {
   "host": {
     "name": "painty",
-    "user": "ubuntu"
+    "user": "ubuntu",
+    "timezone": "Asia/Tokyo"
   }
 }
