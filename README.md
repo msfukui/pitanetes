@@ -38,6 +38,8 @@ $ bundle exec itamae ssh -h framy -u ubuntu -j nodes/framy.json roles/default.rb
 
 ## Reference
 
+### itamae
+
 * itamae https://github.com/itamae-kitchen/itamae
 
 * mitamae https://github.com/itamae-kitchen/mitamae
@@ -51,3 +53,13 @@ $ bundle exec itamae ssh -h framy -u ubuntu -j nodes/framy.json roles/default.rb
 * ようやく itamae の使い方が固まってきたのでメモ - えいのうにっき https://blog.a-know.me/entry/2018/01/24/221051
 
 * マネーフォワードのItamae Tips https://moneyforward.com/engineers_blog/2017/04/11/itamae-tips/
+
+* itamae実践Tips - Qiita https://qiita.com/sue445/items/b67b0e7209a7fae1a52a
+
+### Raspberry Pie
+
+* Raspberry Pi 4にUbuntu 20.04 LTSとDockerをインストールする - Qiit https://qiita.com/yuyakato/items/ff7b23f9cee42c937ba9
+
+### Docker, Kubanetes
+
+* Install Docker Engine on Ubuntu | docker docs https://docs.docker.com/engine/install/ubuntu/
