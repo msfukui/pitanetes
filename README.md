@@ -19,12 +19,12 @@ Bundled gems are installed into `./vendor/bundle`
 Set with Wi-Fi router, etc.
 
 ```
-192.168.10.191 framy
-192.168.10.192 spotty
-192.168.10.193 painty
+192.168.10.191 framy  # master, control-plane
+192.168.10.192 spotty # worker
+192.168.10.193 painty # worker
 ```
 
-## Apply to servers
+## Apply
 
 ```
 $ bundle exec itamae ssh -h framy -u ubuntu -j nodes/framy.json roles/default.rb
@@ -58,7 +58,15 @@ $ bundle exec itamae ssh -h framy -u ubuntu -j nodes/framy.json roles/default.rb
 
 ### Raspberry Pie
 
+* 自宅にKubernetesクラスター『おうちKubernetes』を作ってみた https://eng-blog.iij.ad.jp/archives/6304
+
+    この記事がきっかけで環境を作る気持ちになりました。
+
 * Raspberry Pi 4にUbuntu 20.04 LTSとDockerをインストールする - Qiit https://qiita.com/yuyakato/items/ff7b23f9cee42c937ba9
+
+* GPIO - Raspberry Pie Documentation https://www.raspberrypi.org/documentation/usage/gpio/
+
+    ピンの意味からわかっていなかったので、ラックのファンの配線を指す際の参考になりました。
 
 ### Docker, Kubanetes
 
