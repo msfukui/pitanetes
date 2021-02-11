@@ -2,6 +2,7 @@
   "host": {
     "name": "painty",
     "user": "ubuntu",
-    "timezone": "Asia/Tokyo"
+    "timezone": "Asia/Tokyo",
+    "master": false
   }
 }
