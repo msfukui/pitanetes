@@ -35,6 +35,15 @@ $ bundle exec itamae ssh -h framy -u ubuntu -j nodes/framy.json roles/default.rb
 ...
 ```
 
+### Display `kubeadm join` command for worker nodes
+
+After setup a master node:
+
+```
+$ bundle exec itamae ssh -l warn -h framy -u ubuntu -j nodes/framy.json cmd/get_kubeadm_join.rb 
+kubeadm join --token ******** ***.***.***.***:6443 --discovery-token-ca-cert-hash sha256:********
+```
+
 ## Reference
 
 ### itamae
