@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # install Docker version
-docker_version = '5:19.03.15~3-0~ubuntu-focal'
+docker_version = node[:host][:use_docker_version]
 
 # Uninstall old versions docker
 %w[
@@ -54,12 +54,12 @@ end
   end
 end
 
-execute 'Downgrade Docker Engine and Client (for Kubernetes support)' do
+execute "Downgrade Docker Engine and Client (for Kubernetes support) #{docker_version}" do
   command 'sudo apt-get install -y --allow-downgrades --no-install-recommends ' \
     "docker-ce=#{docker_version} docker-ce-cli=#{docker_version}"
   not_if "sudo dpkg -l | grep 'docker-ce' | grep '#{docker_version}'"
 end
 
 execute 'Hold docker\'s version' do
-  command 'sudo apt-mark hold docker-ce docker-ce-cli containerd.io'
+  command 'sudo apt-mark hold docker-ce docker-ce-cli'
 end

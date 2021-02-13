@@ -39,7 +39,8 @@ example:
     "name": "framy",
     "user": "ubuntu",
     "timezone": "Asia/Tokyo",
-    "master": true
+    "master": true,
+    "use_docker_version": "5:19.03.15~3-0~ubuntu-focal"
   }
 }
 ```
