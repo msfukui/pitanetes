@@ -68,7 +68,7 @@ example:
 Wether the command `itamae` a works:
 
 ```
-$ bundle exec itamae ssh -l warn -u ubuntu -h framy -j nodes/framy.json recipes/test_command_executed/default.rb
+$ bundle exec itamae ssh -l warn -u ubuntu -h framy -j nodes/framy.json recipes/test/default.rb
 "host_inventory":
 {
   "platform": "ubuntu",
