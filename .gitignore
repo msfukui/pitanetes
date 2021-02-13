@@ -1,2 +1,4 @@
 /vendor/bundle
 /.bundle
+# Generated 'kubeadm join' parameters file
+.pitanetes_k8s_master

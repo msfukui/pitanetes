@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# master, control-plane's hostname
+host="framy"
+
+bundle config --local path vendor/bundle
+bundle install
+# Setup k8s master, control-plane
+bundle exec itamae ssh -u ubuntu -h $host -j nodes/$host.json roles/default.rb
+# Output 'kubeadm join' parameters
+bundle exec itamae ssh -l warn -h $host -u ubuntu -j nodes/$host.json recipes/get_kubeadm_join/default.rb > .pitanetes_k8s_master
