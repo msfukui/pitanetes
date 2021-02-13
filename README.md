@@ -41,6 +41,25 @@ Set with Wi-Fi router, etc.
 
 ## Recipes, etc
 
+### Test if the command `itamae` can be executed
+
+```
+$ bundle exec itamae ssh -l warn -u ubuntu -h framy -j nodes/framy.json recipes/test_command_executed/default.rb
+"host_inventory":
+{
+  "platform": "ubuntu",
+  "platform_version": "20.04",
+  "hostname": "framy"
+}
+"node":
+{
+  "host": {
+    "name": "framy",
+    "user": "ubuntu"
+  }
+}
+```
+
 ### Display `kubeadm join` information for worker node(s)
 
 After setup a master node:
