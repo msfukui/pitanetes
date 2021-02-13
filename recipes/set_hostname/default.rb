@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
-execute "set hostname #{node[:host][:name]}" do
-  command "sudo hostnamectl set-hostname #{node[:host][:name]}"
+host = node[:host][:name]
+
+execute "set hostname #{host}" do
+  command "sudo hostnamectl set-hostname #{host}"
 end

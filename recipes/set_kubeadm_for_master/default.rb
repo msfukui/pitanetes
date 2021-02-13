@@ -24,7 +24,8 @@ if node[:host][:master]
 
   execute 'copy /etc/kubernetes/admin.conf' do
     command "cp /etc/kubernetes/admin.conf /home/#{user}/.kube/config && " \
-      "sudo chown #{user}:#{user} /home/#{user}/.kube/config"
+      "sudo chown #{user}:#{user} /home/#{user}/.kube/config && " \
+      "chmod 600 /home/#{user}/.kube/config"
     not_if "cmp -s /etc/kubernetes/admin.conf /home/#{user}/.kube/config"
   end
 

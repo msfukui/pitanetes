@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
-execute "Use docker in #{node[:host][:user]}" do
-  command "sudo usermod -aG docker #{node[:host][:user]}"
+user = node[:host][:user]
+
+execute "Use docker in #{user}" do
+  command "sudo usermod -aG docker #{user}"
 end
 
 remote_file '/etc/docker/daemon.json' do

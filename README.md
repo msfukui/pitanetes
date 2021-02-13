@@ -25,23 +25,34 @@ Set with Wi-Fi router, etc.
 
 ## Apply
 
+### Master and control-plane node
+
 ```
-$ bundle exec itamae ssh -h framy -u ubuntu -j nodes/framy.json roles/default.rb
- INFO : Starting Itamae... 
- INFO : Loading node data from /Users/msfukui/projects/pitanetes/nodes/framy.json...
- INFO : Recipe: /Users/msfukui/projects/pitanetes/roles/default.rb
- INFO :   Recipe: /Users/msfukui/projects/pitanetes/recipes/set_ssh_public_keys/default.rb
- INFO :   Recipe: /Users/msfukui/projects/pitanetes/recipes/delete_default_password/default.rb
+./bin/setup_k8s_master
 ...
 ```
 
-### Display `kubeadm join` command for worker nodes
+### Worker node(s)
+
+```
+./bin/setup_k8s_worker
+...
+```
+
+## Recipes, etc
+
+### Display `kubeadm join` information for worker node(s)
 
 After setup a master node:
 
 ```
-$ bundle exec itamae ssh -l warn -h framy -u ubuntu -j nodes/framy.json cmd/get_kubeadm_join.rb 
-kubeadm join --token ******** ***.***.***.***:6443 --discovery-token-ca-cert-hash sha256:********
+$ bundle exec itamae ssh -l warn -h framy -u ubuntu -j nodes/framy.json recipes/get_kubeadm_join/default.rb 
+{
+  "token": "xxxx.*********",
+  "hash": "********",
+  "ip": "***.***.***.***",
+  "port": "****"
+}
 ```
 
 ## Reference

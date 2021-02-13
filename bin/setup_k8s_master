@@ -3,9 +3,23 @@
 # master, control-plane's hostname
 host="framy"
 
+# kubeadm join parameters file
+join_file=".pitanetes_k8s_master_join"
+
+# kubeadm config file
+config_file=".pitanetes_k8s_master_config"
+
 bundle config --local path vendor/bundle
 bundle install
+
 # Setup k8s master, control-plane
-bundle exec itamae ssh -u ubuntu -h $host -j nodes/$host.json roles/default.rb
+echo "Setup master node: [${host}]"
+bundle exec itamae ssh -u ubuntu -h ${host} -j nodes/${host}.json roles/default.rb
+
 # Output 'kubeadm join' parameters
-bundle exec itamae ssh -l warn -h $host -u ubuntu -j nodes/$host.json recipes/get_kubeadm_join/default.rb > .pitanetes_k8s_master
+bundle exec itamae ssh -l warn -h ${host} -u ubuntu -j nodes/${host}.json recipes/get_kubeadm_join/default.rb \
+  > $join_file && chmod 600 $join_file
+
+# Output 'kubeadm config' file
+bundle exec itamae ssh -l warn -h ${host} -u ubuntu -j nodes/${host}.json recipes/get_kubeadm_config/default.rb \
+  > $config_file && chmod 600 $config_file

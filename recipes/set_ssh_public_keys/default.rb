@@ -1,14 +1,16 @@
 # frozen_string_literal: true
 
-directory '.ssh' do
+user = node[:host][:user]
+
+directory "/home/#{user}/.ssh" do
   action :create
-  path "/home/#{node[:host][:user]}/.ssh"
+  path "/home/#{user}/.ssh"
   mode '700'
 end
 
-remote_file 'authorized_keys' do
+remote_file "/home/#{user}/.ssh/authorized_keys" do
   action :create
-  path "/home/#{node[:host][:user]}/.ssh/authorized_keys"
+  path "/home/#{user}/.ssh/authorized_keys"
   source './files/.ssh/authorized_keys'
   mode '600'
 end

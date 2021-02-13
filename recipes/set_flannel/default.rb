@@ -2,6 +2,7 @@
 
 if node[:host][:master]
 
+  host = node[:host][:name]
   user = node[:host][:user]
 
   # Flannel's URL
@@ -11,7 +12,7 @@ if node[:host][:master]
     command "export KUBECONFIG=/home/#{user}/.kube/config && " \
       "kubectl apply -f #{flannel_url}"
     not_if  "export KUBECONFIG=/home/#{user}/.kube/config && " \
-      "kubectl get nodes | grep '#{node[:host][:name]}' | grep 'Ready'"
+      "kubectl get nodes | grep '#{host}' | grep 'Ready'"
   end
 
 end

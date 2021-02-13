@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
-execute "set timezone #{node[:host][:timezone]}" do
-  command "sudo timedatectl set-timezone #{node[:host][:timezone]}"
+timezone = node[:host][:timezone]
+
+execute "set timezone #{timezone}" do
+  command "sudo timedatectl set-timezone #{timezone}"
 end
