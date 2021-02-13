@@ -4,6 +4,4 @@ source 'https://rubygems.org'
 
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
-gem 'ed25519'
-gem 'bcrypt_pbkdf'
-gem 'hocho'
+gem 'itamae'
