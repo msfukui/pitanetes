@@ -13,14 +13,35 @@ Resolving dependencies...
 Bundled gems are installed into `./vendor/bundle`
 ```
 
-## Hosts
+## Configuraion
 
-Set with Wi-Fi router, etc.
+### Hosts
+
+Set the IP Address to fixed with the Wi-Fi router, etc.
 
 ```
 192.168.10.191 framy  # master, control-plane
 192.168.10.192 spotty # worker
 192.168.10.193 painty # worker
+```
+
+See `recipes/set_hosts/files/etc/hosts` for the settings.
+
+### Node
+
+Prepare the file as `nodes/[hostname].json`.
+
+example:
+
+```
+{
+  "host": {
+    "name": "framy",
+    "user": "ubuntu",
+    "timezone": "Asia/Tokyo",
+    "master": true
+  }
+}
 ```
 
 ## Apply
@@ -39,9 +60,11 @@ Set with Wi-Fi router, etc.
 ...
 ```
 
-## Recipes, etc
+## Recipe etc
 
-### Test if the command `itamae` can be executed
+### Test
+
+Wether the command `itamae` a works:
 
 ```
 $ bundle exec itamae ssh -l warn -u ubuntu -h framy -j nodes/framy.json recipes/test_command_executed/default.rb
@@ -62,7 +85,7 @@ $ bundle exec itamae ssh -l warn -u ubuntu -h framy -j nodes/framy.json recipes/
 
 ### Display `kubeadm join` information for worker node(s)
 
-After setup a master node:
+After setting up the master node:
 
 ```
 $ bundle exec itamae ssh -l warn -h framy -u ubuntu -j nodes/framy.json recipes/get_kubeadm_join/default.rb 
@@ -73,6 +96,20 @@ $ bundle exec itamae ssh -l warn -h framy -u ubuntu -j nodes/framy.json recipes/
   "port": "****"
 }
 ```
+
+## Feature
+
+* impl `--dry-run`
+
+* test code with `serverspec`
+
+* automate firmware settings and reboot
+
+* improve individual definition of `/etc/hosts`
+
+* replace bash script with ruby
+
+...
 
 ## Reference
 
