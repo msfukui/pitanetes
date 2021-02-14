@@ -19,7 +19,7 @@ Bundled gems are installed into `./vendor/bundle`
 
 Set the IP Address to fixed with the Wi-Fi router, etc.
 
-See `recipes/set_hosts/templates/etc/hosts` and `nodes/[hostname].json` for the settings.
+See `recipes/set_etc_hosts/templates/etc/hosts` and `nodes/[hostname].json` for the settings.
 
 ### Node
 
