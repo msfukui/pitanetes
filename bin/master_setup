@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require 'json'
+
+# master, control-plane's hostname list
+hosts = []
+Dir.glob('nodes/*.json') do |f|
+  j = JSON.parse(File.open(f).read)
+  hosts << j['host'] if j['host']['master']
+end
+
+# kubeadm join parameters file
+join_file = '.pitanetes_k8s_master_join'
+
+# kubeadm config file
+config_file = '.pitanetes_k8s_master_config'
+
+# Setup k8s master, control-plane
+hosts.each do |host|
+  puts "Setup master node: [#{host['name']}]"
+  system("bundle exec itamae ssh -u #{host['user']} -h #{host['name']} -j nodes/#{host['name']}.json " \
+         'roles/default.rb')
+
+  # Output 'kubeadm join' parameters
+  system("bundle exec itamae ssh -l warn -h #{host['name']} -u #{host['user']} -j nodes/#{host['name']}.json " \
+         'recipes/get_kubeadm_join/default.rb ' \
+         "> #{join_file} && chmod 600 #{join_file}")
+
+  # Output 'kubeadm config' file
+  system("bundle exec itamae ssh -l warn -h #{host['name']} -u #{host['user']} -j nodes/#{host['name']}.json " \
+         'recipes/get_kubeadm_config/default.rb ' \
+         "> #{config_file} && chmod 600 #{config_file}")
+end

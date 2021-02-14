@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require 'json'
+
+# worker node's hostname list
+hosts = []
+Dir.glob('nodes/*.json') do |f|
+  j = JSON.parse(File.open(f).read)
+  hosts << j['host'] unless j['host']['master']
+end
+
+# Setup k8s worker nodes
+hosts.each do |host|
+  puts "Setup master node: [#{host['name']}]"
+  system("bundle exec itamae ssh -u #{host['user']} -h #{host['name']} -j nodes/#{host['name']}.json " \
+         'roles/default.rb')
+end
