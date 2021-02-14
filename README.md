@@ -55,10 +55,24 @@ Use the IPs from 192.168.1.240 to 192.168.1.250 for the MetalLB Layer 2 configur
 ...
 ```
 
+dry-run:
+
+```
+./bin/master_setup --dry-run
+...
+```
+
 ### Worker node(s)
 
 ```
 ./bin/worker_setup
+...
+```
+
+dry-run:
+
+```
+./bin/worker_setup --dry-run
 ...
 ```
 
@@ -101,11 +115,9 @@ $ bundle exec itamae ssh -l warn -h framy -u ubuntu -j nodes/framy.json recipes/
 
 ## Feature
 
-* impl `--dry-run`
+* automate firmware settings and reboot
 
 * test code with `serverspec`
-
-* automate firmware settings and reboot
 
 ...
 

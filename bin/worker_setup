@@ -2,6 +2,8 @@
 
 # frozen_string_literal: true
 
+options = ARGV.join(' ')
+
 require 'json'
 
 # worker node's hostname list
@@ -14,6 +16,7 @@ end
 # Setup k8s worker nodes
 hosts.each do |host|
   puts "Setup master node: [#{host['name']}]"
-  system("bundle exec itamae ssh -u #{host['user']} -h #{host['name']} -j nodes/#{host['name']}.json " \
+  system("bundle exec itamae ssh #{options} -u #{host['user']} -h #{host['name']} " \
+         "-j nodes/#{host['name']}.json " \
          'roles/default.rb')
 end

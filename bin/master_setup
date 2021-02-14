@@ -2,6 +2,8 @@
 
 # frozen_string_literal: true
 
+options = ARGV.join(' ')
+
 require 'json'
 
 # master, control-plane's hostname list
@@ -20,16 +22,19 @@ config_file = '.pitanetes_k8s_master_config'
 # Setup k8s master, control-plane
 hosts.each do |host|
   puts "Setup master node: [#{host['name']}]"
-  system("bundle exec itamae ssh -u #{host['user']} -h #{host['name']} -j nodes/#{host['name']}.json " \
+  system("bundle exec itamae ssh #{options} -u #{host['user']} -h #{host['name']} " \
+         "-j nodes/#{host['name']}.json " \
          'roles/default.rb')
 
   # Output 'kubeadm join' parameters
-  system("bundle exec itamae ssh -l warn -h #{host['name']} -u #{host['user']} -j nodes/#{host['name']}.json " \
+  system("bundle exec itamae ssh #{options} -l warn -h #{host['name']} -u #{host['user']} " \
+         "-j nodes/#{host['name']}.json " \
          'recipes/get_kubeadm_join/default.rb ' \
          "> #{join_file} && chmod 600 #{join_file}")
 
   # Output 'kubeadm config' file
-  system("bundle exec itamae ssh -l warn -h #{host['name']} -u #{host['user']} -j nodes/#{host['name']}.json " \
+  system("bundle exec itamae ssh #{options} -l warn -h #{host['name']} -u #{host['user']} " \
+         "-j nodes/#{host['name']}.json " \
          'recipes/get_kubeadm_config/default.rb ' \
          "> #{config_file} && chmod 600 #{config_file}")
 end
