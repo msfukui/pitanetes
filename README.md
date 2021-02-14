@@ -45,6 +45,12 @@ example:
 }
 ```
 
+### Note
+
+* MetalLB's IPs
+
+Use the IPs from 192.168.1.240 to 192.168.1.250 for the MetalLB Layer 2 configuration.
+
 ## Apply
 
 ### Master and control-plane node
@@ -154,8 +160,12 @@ $ bundle exec itamae ssh -l warn -h framy -u ubuntu -j nodes/framy.json recipes/
 
     日本語のドキュメントにある「iptablesがnftablesバックエンドを使用しないようにする」という記載 (https://kubernetes.io/ja/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#iptables%E3%81%8Cnftables%E3%83%90%E3%83%83%E3%82%AF%E3%82%A8%E3%83%B3%E3%83%89%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%AA%E3%81%84%E3%82%88%E3%81%86%E3%81%AB%E3%81%99%E3%82%8B) は 1.17 以降では不要な対応みたいです。
 
+    英語版からは該当の記述は削除されていました。(2021-02-11 現在)
+
     c.f. http://otake.knowd2.com/drupal-rotake/?q=node/203
 
-    英語版からは該当の記述は削除されていました。(2021-02-11)
-
 * flannel https://github.com/coreos/flannel
+
+* MetalLB installation https://metallb.universe.tf/installation/
+
+* MetalLB configuration https://metallb.universe.tf/configuration/

@@ -5,7 +5,7 @@ if node[:host][:master]
   host = node[:host][:name]
   user = node[:host][:user]
 
-  # Flannel's URL
+  # Flannel's manifest URL
   flannel_url = 'https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml'
 
   execute "kubectl apply -f #{flannel_url}" do
