@@ -19,12 +19,6 @@ Bundled gems are installed into `./vendor/bundle`
 
 Set the IP Address to fixed with the Wi-Fi router, etc.
 
-```
-192.168.10.191 framy  # master, control-plane
-192.168.10.192 spotty # worker
-192.168.10.193 painty # worker
-```
-
 See `recipes/set_hosts/files/etc/hosts` for the settings.
 
 ### Node
@@ -38,6 +32,7 @@ example:
   "host": {
     "name": "framy",
     "user": "ubuntu",
+    "ip": "192.168.10.191",
     "timezone": "Asia/Tokyo",
     "master": true,
     "use_docker_version": "5:19.03.15~3-0~ubuntu-focal"
@@ -56,14 +51,14 @@ Use the IPs from 192.168.1.240 to 192.168.1.250 for the MetalLB Layer 2 configur
 ### Master and control-plane node
 
 ```
-./bin/setup_k8s_master
+./bin/master_setup
 ...
 ```
 
 ### Worker node(s)
 
 ```
-./bin/setup_k8s_worker
+./bin/worker_setup
 ...
 ```
 
@@ -111,10 +106,6 @@ $ bundle exec itamae ssh -l warn -h framy -u ubuntu -j nodes/framy.json recipes/
 * test code with `serverspec`
 
 * automate firmware settings and reboot
-
-* improve individual definition of `/etc/hosts`
-
-* replace bash script with ruby
 
 ...
 
