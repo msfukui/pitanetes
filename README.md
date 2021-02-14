@@ -150,6 +150,10 @@ $ bundle exec itamae ssh -l warn -h framy -u ubuntu -j nodes/framy.json recipes/
 
     ピンの意味からわかっていなかったので、ラックのファンの配線を指す際の参考になりました。
 
+* ラズパイkubernetes構築メモ https://blog.tsuchinokometal.com/2021/raspberrypi_k8s/
+
+    構築タイミングや対象OSが近くて参考になりました。
+
 ### Docker, Kubanetes
 
 * Install Docker Engine on Ubuntu | docker docs https://docs.docker.com/engine/install/ubuntu/
