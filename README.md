@@ -44,7 +44,7 @@ example:
 
 * MetalLB's IPs
 
-Use the IPs from 192.168.1.240 to 192.168.1.250 for the MetalLB Layer 2 configuration.
+    Use the IPs from 192.168.1.240 to 192.168.1.250 for the MetalLB Layer 2 configuration.
 
 ## Apply
 
