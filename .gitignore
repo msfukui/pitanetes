@@ -4,3 +4,5 @@
 .pitanetes_k8s_master_join
 # Generated 'kubeadm config' file
 .pitanetes_k8s_master_config
+# itamae-secrets secret directory
+/secrets

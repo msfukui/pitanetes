@@ -131,6 +131,8 @@ $ bundle exec itamae ssh -l warn -h framy -u ubuntu -j nodes/framy.json recipes/
 
 * hocho https://github.com/sorah/hocho
 
+* itamae-secrets https://github.com/sorah/itamae-secrets
+
 * サーバーのプロビジョニングをmitamae + hochoでやる方法 - Qiita https://qiita.com/k0kubun/items/f6a5ccc649a25fc61351
 
 * Chef脱落者が、Itamaeで快適インフラ生活する話 - Qiita https://qiita.com/zaru/items/8ae6182e544aac6f6d79
