@@ -1,5 +1,9 @@
 apikey = "<%= @api_key %>"
 roles = [ "<%= @role %>" ]
+
+[plugin.metrics.cpu_temperature]
+command = "/etc/mackerel-agent/mackerel-plugin-cpu-temperature-raspi"
+
 # pidfile = "/var/run/mackerel-agent.pid"
 # root = "/var/lib/mackerel-agent"
 # verbose = false

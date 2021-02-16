@@ -33,6 +33,15 @@ template '/etc/mackerel-agent/mackerel-agent.conf' do
   variables(api_key: api_key, role: role)
 end
 
+remote_file '/etc/mackerel-agent/mackerel-plugin-cpu-temperature-raspi' do
+  action :create
+  path '/etc/mackerel-agent/mackerel-plugin-cpu-temperature-raspi'
+  source './files/etc/mackerel-agent/mackerel-plugin-cpu-temperature-raspi'
+  mode '755'
+  owner 'root'
+  group 'root'
+end
+
 service 'mackerel-agent' do
   action %i[start enable]
   subscribes :restart, 'template[/etc/mackerel-agent/mackerel-agent.conf]'
