@@ -113,6 +113,24 @@ $ bundle exec itamae ssh -l warn -h framy -u ubuntu -j nodes/framy.json recipes/
 }
 ```
 
+### Set ddclient for Dynamic DNS (Google Domains)
+
+```
+ INFO : Starting Itamae...
+ INFO : Loading node data from /Users/msfukui/projects/pitanetes/nodes/framy.json...
+ INFO : Recipe: /Users/msfukui/projects/pitanetes/recipes/package_ddclient/default.rb
+ INFO :   package[ddclient] installed will change from 'false' to 'true'
+ INFO :   template[/etc/ddclient.conf] modified will change from 'false' to 'true'
+ ...
+ INFO :   Notifying restart to service resource 'ddclient' (delayed)
+ INFO :   (because it subscribes this resource)
+ INFO :   remote_file[/etc/default/ddclient] modified will change from 'false' to 'true'
+ INFO :   remote_file[/etc/default/ddclient] mode will change from '0600' to '0644'
+ ...
+ INFO :   Notifying restart to service resource 'ddclient' (delayed)
+ INFO :   (because it subscribes this resource)
+```
+
 ## Feature
 
 * automate firmware settings and reboot
