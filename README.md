@@ -125,6 +125,7 @@ $ be itamae-secrets set --base=./secrets ddclient_password ********
 Moreover:
 
 ```
+$ be itamae ssh -u ubuntu -h framy -j nodes/framy.json recipes/package_ddclient/default.rb
  INFO : Starting Itamae...
  INFO : Loading node data from /Users/msfukui/projects/pitanetes/nodes/framy.json...
  INFO : Recipe: /Users/msfukui/projects/pitanetes/recipes/package_ddclient/default.rb
@@ -134,7 +135,6 @@ Moreover:
  INFO :   Notifying restart to service resource 'ddclient' (delayed)
  INFO :   (because it subscribes this resource)
  INFO :   remote_file[/etc/default/ddclient] modified will change from 'false' to 'true'
- INFO :   remote_file[/etc/default/ddclient] mode will change from '0600' to '0644'
  ...
  INFO :   Notifying restart to service resource 'ddclient' (delayed)
  INFO :   (because it subscribes this resource)

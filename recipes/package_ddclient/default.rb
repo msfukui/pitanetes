@@ -27,7 +27,7 @@ if node[:host][:master]
     action :create
     path '/etc/default/ddclient'
     source './files/etc/default/ddclient'
-    mode '644'
+    mode '600'
     owner 'root'
     group 'root'
   end
