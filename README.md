@@ -115,6 +115,15 @@ $ bundle exec itamae ssh -l warn -h framy -u ubuntu -j nodes/framy.json recipes/
 
 ### Set ddclient for Dynamic DNS (Google Domains)
 
+Set username and password in advance by the following method.
+
+```
+$ be itamae-secrets set --base=./secrets ddclient_username ********
+$ be itamae-secrets set --base=./secrets ddclient_password ********
+```
+
+Moreover:
+
 ```
  INFO : Starting Itamae...
  INFO : Loading node data from /Users/msfukui/projects/pitanetes/nodes/framy.json...
