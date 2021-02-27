@@ -1,15 +1,13 @@
 # frozen_string_literal: true
 
-if node[:host][:master]
+# for master node
 
-  user = node[:host][:user]
+user = node[:host][:user]
 
-  # from master node's ~/.kube/config
+# from master node's ~/.kube/config
 
-  config = (run_command "cat /home/#{user}/.kube/config").stdout.strip
+config = (run_command "cat /home/#{user}/.kube/config").stdout.strip
 
-  # to worker node's ~/.kube/config
+# to worker node's ~/.kube/config
 
-  puts config
-
-end
+puts config
