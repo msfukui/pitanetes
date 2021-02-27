@@ -7,5 +7,9 @@
     "master": true,
     "role": "pitanetes:master",
     "use_docker_version": "5:19.03.15~3-0~ubuntu-focal"
-  }
+  },
+  "recipes": [
+    "base.rb",
+    "master.rb"
+  ]
 }

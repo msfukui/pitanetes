@@ -19,7 +19,7 @@ Bundled gems are installed into `./vendor/bundle`
 
 Set the IP Address to fixed with the Wi-Fi router, etc.
 
-See `recipes/set_etc_hosts/templates/etc/hosts` and `nodes/[hostname].json` for the settings.
+See `nodes/[hostname].json` for the settings.
 
 ### Node
 
@@ -35,12 +35,19 @@ example:
     "ip": "192.168.10.191",
     "timezone": "Asia/Tokyo",
     "master": true,
+    "role": "pitanetes:master",
     "use_docker_version": "5:19.03.15~3-0~ubuntu-focal"
-  }
+  },
+  "recipes": [
+    "base.rb",
+    "master.rb"
+  ]
 }
 ```
 
-### Set mackerel api key
+### Secret keys
+
+#### mackerel api key
 
 ```
 $ bundle exec itamae-secrets set --base=./secrets mackerel_apikey ********
