@@ -6,7 +6,7 @@ remote_file "/home/#{user}/.bashrc" do
   action :create
   path "/home/#{user}/.bashrc"
   source './files/dot.bashrc'
-  mode '644'
+  mode '640'
   owner user
   group user
 end

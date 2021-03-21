@@ -8,6 +8,12 @@
     "role": "pitanetes:master",
     "use_docker_version": "5:19.03.15~3-0~ubuntu-focal"
   },
+  "ingress_nginx": {
+    "loadbalancer_ip": "192.168.10.240"
+  },
+  "metallb": {
+    "loadbalancer_ip_range": "192.168.10.240-192.168.10.250"
+  },
   "recipes": [
     "base.rb",
     "master.rb"
