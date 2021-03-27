@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-# get all node's list
+# get all etc/hosts list
 hosts = []
 Dir.glob('nodes/*.json') do |f|
   j = JSON.parse(File.open(f).read)
-  hosts << j['host']
+  hosts = j['etc']['hosts'] if j['host']['master']
 end
 
 template '/etc/hosts' do

@@ -8,6 +8,14 @@
     "role": "pitanetes:master",
     "use_docker_version": "5:19.03.15~3-0~ubuntu-focal"
   },
+  "etc": {
+    "hosts": [
+      { "name": "framy", "ip": "192.168.10.191" },
+      { "name": "spotty", "ip": "192.168.10.192" },
+      { "name": "painty", "ip": "192.168.10.193" },
+      { "name": "msfukui.page", "ip": "192.168.10.240" }
+    ]
+  },
   "ingress_nginx": {
     "loadbalancer_ip": "192.168.10.240"
   },

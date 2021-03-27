@@ -10,12 +10,14 @@ metallb_ns_url = 'https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manif
 metallb_url    = 'https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/metallb.yaml'
 
 execute 'Preparation: editing kube-proxy config' do
-  command 'echo edited.'
-  only_if 'kubectl get configmap kube-proxy -n kube-system -o yaml | ' \
+  command "export KUBECONFIG=/home/#{user}/.kube/config && " \
+    'kubectl get configmap kube-proxy -n kube-system -o yaml | ' \
+    'sed -e "s/strictARP: false/strictARP: true/" | ' \
+    'kubectl apply -f - -n kube-system'
+  only_if "export KUBECONFIG=/home/#{user}/.kube/config && " \
+    'kubectl get configmap kube-proxy -n kube-system -o yaml | ' \
     'sed -e "s/strictARP: false/strictARP: true/" | ' \
     'kubectl diff -f - -n kube-system'
-  not_if  "export KUBECONFIG=/home/#{user}/.kube/config && " \
-    "kubectl get pods --all-namespaces | grep 'metallb-system'"
 end
 
 execute 'Installration: kubectl apply -f metallb_ns_url, metallb_url' do

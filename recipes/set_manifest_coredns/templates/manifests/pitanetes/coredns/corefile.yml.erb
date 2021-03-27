@@ -1,0 +1,44 @@
+apiVersion: v1
+data:
+  Corefile: |
+    .:53 {
+        errors
+        health {
+           lameduck 5s
+        }
+        hosts {<% @hosts.each do |host| %>
+           <%= host[:ip] %> <%= host[:name] %><% end %>
+           fallthrough
+        }
+        ready
+        kubernetes cluster.local in-addr.arpa ip6.arpa {
+           pods insecure
+           fallthrough in-addr.arpa ip6.arpa
+           ttl 30
+        }
+        prometheus :9153
+        forward . /etc/resolv.conf {
+           max_concurrent 1000
+        }
+        cache 30
+        loop
+        reload
+        loadbalance
+    }
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2021-02-11T09:38:26Z"
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:data:
+        .: {}
+        f:Corefile: {}
+    manager: kubeadm
+    operation: Update
+    time: "2021-02-11T09:38:26Z"
+  name: coredns
+  namespace: kube-system
+  resourceVersion: "306"
+  uid: 6b1ae58c-7fa1-40a8-b681-58c10ea8b44e

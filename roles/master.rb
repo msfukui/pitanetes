@@ -2,6 +2,7 @@
 
 include_recipe '../recipes/set_kubeadm_for_master'
 include_recipe '../recipes/set_manifest_flannel'
+include_recipe '../recipes/set_manifest_coredns'
 include_recipe '../recipes/set_manifest_metallb'
 include_recipe '../recipes/set_manifest_ingress-nginx'
 include_recipe '../recipes/set_manifest_cert-manager'

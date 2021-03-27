@@ -27,23 +27,59 @@ Prepare the file as `nodes/[hostname].json`.
 
 example:
 
-```
-{
-  "host": {
-    "name": "framy",
-    "user": "ubuntu",
-    "ip": "192.168.10.191",
-    "timezone": "Asia/Tokyo",
-    "master": true,
-    "role": "pitanetes:master",
-    "use_docker_version": "5:19.03.15~3-0~ubuntu-focal"
-  },
-  "recipes": [
-    "base.rb",
-    "master.rb"
-  ]
-}
-```
+* master and control-plane node
+
+    ```
+    {
+      "host": {
+        "name": "framy",
+        "user": "ubuntu",
+        "ip": "192.168.10.191",
+        "timezone": "Asia/Tokyo",
+        "master": true,
+        "role": "pitanetes:master",
+        "use_docker_version": "5:19.03.15~3-0~ubuntu-focal"
+      },
+      "etc": {
+        "hosts": [
+          { "name": "framy", "ip": "192.168.10.191" },
+          { "name": "spotty", "ip": "192.168.10.192" },
+          { "name": "painty", "ip": "192.168.10.193" },
+          { "name": "msfukui.page", "ip": "192.168.10.240" }
+        ]
+      },
+      "ingress_nginx": {
+        "loadbalancer_ip": "192.168.10.240"
+      },
+      "metallb": {
+        "loadbalancer_ip_range": "192.168.10.240-192.168.10.250"
+      },
+      "recipes": [
+        "base.rb",
+        "master.rb"
+      ]
+    }
+    ```
+
+* worker node
+
+    ```
+    {
+      "host": {
+        "name": "spotty",
+        "user": "ubuntu",
+        "ip": "192.168.10.192",
+        "timezone": "Asia/Tokyo",
+        "master": false,
+        "role": "pitanetes:worker",
+        "use_docker_version": "5:19.03.15~3-0~ubuntu-focal"
+      },
+      "recipes": [
+        "base.rb",
+        "worker.rb"
+      ]
+    }
+    ```
 
 ### Secret keys
 
@@ -57,7 +93,11 @@ $ bundle exec itamae-secrets set --base=./secrets mackerel_apikey ********
 
 * MetalLB's IPs
 
-    Use the IPs from 192.168.1.240 to 192.168.1.250 for the MetalLB Layer 2 configuration.
+    Use the IPs from `192.168.10.240` to `192.168.10.250` for the MetalLB Layer 2 configuration.
+
+* NGINX Ingress Controller's IP
+
+    Borrow the IP `192.168.10.240` from MetalLB.
 
 ## Apply
 
@@ -245,9 +285,17 @@ $ bundle exec itamae ssh -u ubuntu -h framy -j nodes/framy.json recipes/package_
 
     c.f. http://otake.knowd2.com/drupal-rotake/?q=node/203
 
-* flannel
+* Kubernetesの Service についてまとめてみた - Qiita
 
-    https://github.com/coreos/flannel
+    https://qiita.com/kouares/items/94a073baed9dffe86ea0
+
+### flannel
+
+https://github.com/coreos/flannel
+
+### MetalLB
+
+https://metallb.universe.tf
 
 * MetalLB installation
 
@@ -256,6 +304,46 @@ $ bundle exec itamae ssh -u ubuntu -h framy -j nodes/framy.json recipes/package_
 * MetalLB configuration
 
     https://metallb.universe.tf/configuration/
+
+### NGINX Ingress Controller
+
+https://kubernetes.github.io/
+
+* Installation Guide - Bare-metal
+
+    https://kubernetes.github.io/ingress-nginx/deploy/#bare-metal
+
+* Bare-metal considerations
+
+    https://kubernetes.github.io/ingress-nginx/deploy/baremetal/
+
+* templates/controller-service.yaml
+
+    https://github.com/kubernetes/ingress-nginx/blob/master/charts/ingress-nginx/templates/controller-service.yaml
+
+* Kubernetes + cert-manager + letsencrypt + ingress-nginx-controller環境構築 - Qiita
+
+    https://qiita.com/iqustechtips/items/1ec6b32a98b3fab427d6
+
+### cert-manager
+
+https://cert-manager.io
+
+* Installation / Kubernetes
+
+    https://cert-manager.io/docs/installation/kubernetes/
+
+* Tutorials / Securing NGINX-ingress
+
+    https://cert-manager.io/docs/tutorials/acme/ingress/
+
+* Configuration / ACME
+
+    https://cert-manager.io/docs/configuration/acme/
+
+*  FAQ / Troubleshooting Issuing ACME Certificates
+
+    https://cert-manager.io/docs/faq/acme/
 
 ### 監視
 
