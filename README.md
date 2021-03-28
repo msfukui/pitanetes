@@ -193,6 +193,31 @@ $ bundle exec itamae ssh -u ubuntu -h framy -j nodes/framy.json recipes/package_
  INFO :   (because it subscribes this resource)
 ```
 
+### Deploy `ingress-nginx` and TLS certificate
+
+Deploy the Ingress(use `NGINX Ingress Controller`) and TLS terminations on `msfukui.page` with the following command:
+
+```
+$ kubectl apply -f manifests/cert-manager/msfukui.issuer.yml 
+issuer.cert-manager.io/msfukui-letsencrypt-production created
+$ kubectl get issuer
+NAME                             READY   AGE
+msfukui-letsencrypt-production   True    37m
+```
+
+```
+$ kubectl apply -f manifests/ingress/msfukui.ingress.yml 
+ingress.networking.k8s.io/msfukui-ingress created
+$ kubectl get ingress
+NAME              CLASS    HOSTS          ADDRESS          PORTS     AGE
+msfukui-ingress   <none>   msfukui.page   192.168.10.193   80, 443   49m
+$ kubectl get services -n ingress-nginx
+NAME                                 TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)                      AGE
+ingress-nginx-controller             LoadBalancer   10.109.101.82   192.168.10.240   80:31760/TCP,443:30423/TCP   6d10h
+ingress-nginx-controller-admission   ClusterIP      10.98.166.150   <none>           443/TCP                      6d10h
+
+```
+
 ## Feature
 
 * automate firmware settings and reboot

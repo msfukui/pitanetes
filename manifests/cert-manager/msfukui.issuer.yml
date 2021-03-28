@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: msfukui-letsencrypt-production
+spec:
+  acme:
+    email: msfukui@gmail.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: msfukui-letsencrypt-production
+    solvers:
+    - http01:
+        ingress:
+          class: nginx
