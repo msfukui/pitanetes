@@ -290,6 +290,12 @@ ingress-nginx-controller-admission   ClusterIP      10.98.166.150   <none>      
 
     構築タイミングや対象OSが近くて参考になりました。
 
+* Raspbian初期設定(RaspberryPi4)
+
+    https://qiita.com/legitwhiz/items/bc897259b27f3c0e7aa0
+
+    Raspbian は結局使わなかったですが、config の記述が参考になります。
+
 ### Docker, Kubanetes
 
 * Install Docker Engine on Ubuntu | docker docs
