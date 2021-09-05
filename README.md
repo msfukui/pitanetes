@@ -54,6 +54,13 @@ example:
       "metallb": {
         "loadbalancer_ip_range": "192.168.10.240-192.168.10.250"
       },
+      "coredns": {
+        "dnsservers": [
+          { "name": "primary dns from isp", "ip": "210.131.159.80" },
+          { "name": "secondary dns from isp", "ip": "175.184.27.70" },
+          { "name": "google (for fallback)", "ip": "8.8.8.8" }
+        ]
+      },
       "recipes": [
         "base.rb",
         "master.rb"
@@ -73,6 +80,13 @@ example:
         "master": false,
         "role": "pitanetes:worker",
         "use_docker_version": "5:19.03.15~3-0~ubuntu-focal"
+      },
+      "coredns": {
+        "dnsservers": [
+          { "name": "primary dns from isp", "ip": "210.131.159.80" },
+          { "name": "secondary dns from isp", "ip": "175.184.27.70" },
+          { "name": "google (for fallback)", "ip": "8.8.8.8" }
+        ]
       },
       "recipes": [
         "base.rb",
@@ -376,7 +390,7 @@ https://cert-manager.io
 
     https://cert-manager.io/docs/faq/acme/
 
-### 監視
+### Observation
 
 * mackerel
 
@@ -391,3 +405,29 @@ https://cert-manager.io
 * ddclientでGoogle DomainsのDDNSを更新する方法
 
     https://www.uchidigi.com/2020/01/ddclient-google-ddns.html
+
+### CoreDNS
+
+* CoreDNS Manual
+
+    https://coredns.io/manual/toc/
+
+    ログは設定するとデフォルトでは標準出力される、など。
+
+* Docker によるDNS サーバーのデプロイ - vertual pantry
+
+    https://blog.vpantry.net/2020/04/coredns/
+
+    コンテナで DNS を提供したかったので参考にさせていただきました。
+
+* Ubuntu: How To Free Up Port 53, Used By systemd-resolved
+
+    https://www.linuxuprising.com/2020/07/ubuntu-how-to-free-up-port-53-used-by.html
+
+    設定変更後、サーバを再起動したくなかったので、その箇所を除いて参考にしました。
+
+* Ubuntu18.04のDNSリゾルバをsystemd-resolvedからdnsmasqに変更する - ぶていのログでぶログ
+
+    https://tech.buty4649.net/entry/2018/10/13/130045
+
+    `sudo systemctl restart systemd-resolved` で systemd-resolved を再起動するところだけを参考にしました。

@@ -8,6 +8,13 @@
     "role": "pitanetes:worker",
     "use_docker_version": "5:19.03.15~3-0~ubuntu-focal"
   },
+  "coredns": {
+    "dnsservers": [
+      { "name": "primary dns from isp", "ip": "210.131.159.80" },
+      { "name": "secondary dns from isp", "ip": "175.184.27.70" },
+      { "name": "google (for fallback)", "ip": "8.8.8.8" }
+    ]
+  },
   "recipes": [
     "base.rb",
     "worker.rb"

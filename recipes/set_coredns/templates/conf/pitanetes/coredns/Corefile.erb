@@ -1,0 +1,22 @@
+.:53 {
+    log
+    errors
+    health {
+        lameduck 5s
+    }
+    hosts {
+        127.0.0.1 youtube.com
+        127.0.0.1 www.youtube.com
+        127.0.0.1 m.youtube.com
+        fallthrough
+    }
+    ready
+    prometheus :9153
+    forward . <% @dnsservers.each do |dnsserver| %><%= dnsserver[:ip] %> <% end %>{
+        max_concurrent 1000
+    }
+    cache 30
+    loop
+    reload
+    loadbalance
+}
