@@ -55,6 +55,11 @@ example:
         "loadbalancer_ip_range": "192.168.10.240-192.168.10.250"
       },
       "coredns": {
+        "locals": [
+          { "domain": "www.youtube.com", "ip": "127.0.0.1" },
+          { "domain": "m.youtube.com", "ip": "127.0.0.1" },
+          { "domain": "youtube.com", "ip": "127.0.0.1" }
+        ],
         "dnsservers": [
           { "name": "primary dns from isp", "ip": "210.131.159.80" },
           { "name": "secondary dns from isp", "ip": "175.184.27.70" },
@@ -82,6 +87,11 @@ example:
         "use_docker_version": "5:19.03.15~3-0~ubuntu-focal"
       },
       "coredns": {
+        "locals": [
+          { "domain": "www.youtube.com", "ip": "127.0.0.1" },
+          { "domain": "m.youtube.com", "ip": "127.0.0.1" },
+          { "domain": "youtube.com", "ip": "127.0.0.1" }
+        ],
         "dnsservers": [
           { "name": "primary dns from isp", "ip": "210.131.159.80" },
           { "name": "secondary dns from isp", "ip": "175.184.27.70" },

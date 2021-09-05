@@ -5,6 +5,7 @@
 
 user = node[:host][:user]
 dnsservers = node[:coredns][:dnsservers]
+locals = node[:coredns][:locals]
 
 directory "/home/#{user}/conf/pitanetes/coredns" do
   action :create
@@ -22,7 +23,7 @@ template "/home/#{user}/conf/pitanetes/coredns/Corefile" do
   mode '640'
   owner user
   group user
-  variables(dnsservers: dnsservers)
+  variables(dnsservers: dnsservers, locals: locals)
 end
 
 remote_file '/etc/systemd/resolved.conf' do
