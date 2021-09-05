@@ -1,6 +1,6 @@
 # pitanetes
 
-A server configuration of msfukui's personal kubernetes cluster by raspberry pi (Ubuntu 20.04 LTS 2, 64bit).
+A server configuration of msfukui's personal kubernetes cluster by raspberry pi (Ubuntu 20.04 LTS 3, 64bit).
 
 ## Setup
 
@@ -235,6 +235,8 @@ ingress-nginx-controller-admission   ClusterIP      10.98.166.150   <none>      
 ## Feature
 
 * automate firmware settings and reboot
+
+* migrate from itamae to mitamae & hocho
 
 * test code with `serverspec`
 
