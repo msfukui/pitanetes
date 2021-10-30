@@ -43,6 +43,6 @@ end
 
 execute 'Start CoreDNS' do
   command "docker run -d --rm -v /home/#{user}/conf/pitanetes/coredns/:/root/ " \
-    '--name coredns -p 53:53/udp coredns/coredns -conf /root/Corefile'
+    '--name coredns -p 53:53 -p 53:53/udp coredns/coredns -conf /root/Corefile'
   not_if 'docker ps -f name=coredns -f publish=53/udp -q | grep "[0-9|a-z]"'
 end
