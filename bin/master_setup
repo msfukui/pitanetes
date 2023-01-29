@@ -6,7 +6,7 @@ options = ARGV.join(' ')
 
 require 'json'
 
-# master, control-plane's hostname list
+# control-plane's hostname list
 hosts = []
 Dir.glob('nodes/*.json') do |f|
   j = JSON.parse(File.open(f).read)
@@ -19,7 +19,7 @@ join_file = '.pitanetes_k8s_master_join'
 # kubeadm config file
 config_file = '.pitanetes_k8s_master_config'
 
-# Setup k8s master, control-plane
+# Setup k8s control-plane
 hosts.each do |host|
   puts "Setup master node: [#{host['name']}]"
   system("bundle exec itamae ssh #{options} -u #{host['user']} -h #{host['name']} " \

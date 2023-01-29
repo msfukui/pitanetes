@@ -27,7 +27,7 @@ Prepare the file as `nodes/[hostname].json`.
 
 example:
 
-* master and control-plane node
+* control-plane node
 
     ```
     {
@@ -46,9 +46,6 @@ example:
           { "name": "painty", "ip": "192.168.10.193" },
           { "name": "msfukui.page", "ip": "192.168.10.240" }
         ]
-      },
-      "ingress_nginx": {
-        "loadbalancer_ip": "192.168.10.240"
       },
       "metallb": {
         "loadbalancer_ip_range": "192.168.10.240-192.168.10.250"
@@ -99,7 +96,7 @@ $ bundle exec itamae-secrets set --base=./secrets mackerel_apikey ********
 
 ## Apply
 
-### Master and control-plane node
+### control-plane node
 
 ```
 ./bin/master_setup
