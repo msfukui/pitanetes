@@ -5,7 +5,7 @@
 user = node[:host][:user]
 
 # cert-manager's manifest URL
-cert_manager_url = 'https://github.com/jetstack/cert-manager/releases/download/v1.2.0/cert-manager.yaml'
+cert_manager_url = 'https://github.com/jetstack/cert-manager/releases/download/v1.8.0/cert-manager.yaml'
 
 execute 'Installration: kubectl apply -f cert-manager_url' do
   command "export KUBECONFIG=/home/#{user}/.kube/config && " \

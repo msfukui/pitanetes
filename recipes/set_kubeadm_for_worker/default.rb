@@ -13,14 +13,6 @@ end
 
 config_file = '.pitanetes_k8s_master_config'
 
-execute "kubeadm join in #{host}" do
-  command "sudo kubeadm join #{h['ip']}:#{h['port']} " \
-    "--token #{h['token']} " \
-    "--discovery-token-ca-cert-hash sha256:#{h['hash']}"
-  not_if "export KUBECONFIG=/home/#{user}/.kube/config && " \
-    "kubectl get nodes | grep '#{host}'"
-end
-
 directory "/home/#{user}/.kube" do
   action :create
   path "/home/#{user}/.kube"
@@ -36,4 +28,12 @@ remote_file "/home/#{user}/.kube/config" do
   mode '600'
   owner user
   group user
+end
+
+execute "kubeadm join in #{host}" do
+  command "sudo kubeadm join #{h['ip']}:#{h['port']} " \
+    "--token #{h['token']} " \
+    "--discovery-token-ca-cert-hash sha256:#{h['hash']}"
+  not_if "export KUBECONFIG=/home/#{user}/.kube/config && " \
+    "kubectl get nodes | grep '#{host}'"
 end
