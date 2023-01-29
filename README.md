@@ -37,8 +37,7 @@ example:
         "ip": "192.168.10.191",
         "timezone": "Asia/Tokyo",
         "master": true,
-        "role": "pitanetes:master",
-        "use_docker_version": "5:19.03.15~3-0~ubuntu-focal"
+        "role": "pitanetes:master"
       },
       "etc": {
         "hosts": [
@@ -53,18 +52,6 @@ example:
       },
       "metallb": {
         "loadbalancer_ip_range": "192.168.10.240-192.168.10.250"
-      },
-      "coredns": {
-        "locals": [
-          { "domain": "www.youtube.com", "ip": "127.0.0.1" },
-          { "domain": "m.youtube.com", "ip": "127.0.0.1" },
-          { "domain": "youtube.com", "ip": "127.0.0.1" }
-        ],
-        "dnsservers": [
-          { "name": "primary dns from isp", "ip": "210.131.159.80" },
-          { "name": "secondary dns from isp", "ip": "175.184.27.70" },
-          { "name": "google (for fallback)", "ip": "8.8.8.8" }
-        ]
       },
       "recipes": [
         "base.rb",
@@ -83,20 +70,7 @@ example:
         "ip": "192.168.10.192",
         "timezone": "Asia/Tokyo",
         "master": false,
-        "role": "pitanetes:worker",
-        "use_docker_version": "5:19.03.15~3-0~ubuntu-focal"
-      },
-      "coredns": {
-        "locals": [
-          { "domain": "www.youtube.com", "ip": "127.0.0.1" },
-          { "domain": "m.youtube.com", "ip": "127.0.0.1" },
-          { "domain": "youtube.com", "ip": "127.0.0.1" }
-        ],
-        "dnsservers": [
-          { "name": "primary dns from isp", "ip": "210.131.159.80" },
-          { "name": "secondary dns from isp", "ip": "175.184.27.70" },
-          { "name": "google (for fallback)", "ip": "8.8.8.8" }
-        ]
+        "role": "pitanetes:worker"
       },
       "recipes": [
         "base.rb",
@@ -346,9 +320,39 @@ ingress-nginx-controller-admission   ClusterIP      10.98.166.150   <none>      
 
     https://qiita.com/kouares/items/94a073baed9dffe86ea0
 
+* k8sのノードをアップデートする - Qiita
+
+    https://qiita.com/murata-tomohide/items/19ce618bc4e431954f5b
+
+* kubeadm のアップグレード | Kubernetes
+
+    https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-upgrade/
+
+* kubeadmのトラブルシューティング | Kubernetes
+
+    https://kubernetes.io/ja/docs/setup/production-environment/tools/kubeadm/troubleshooting-kubeadm/
+
+* RaspberryPi上のkubernetes(kubeadm)をアップグレード
+
+    https://qiita.com/yasthon/items/10239c8b70bf19055e2d
+
+* kubernetesのコンテナランタイムをdockerからcontainerdに変更する
+
+    https://qiita.com/yasthon/items/31c1870d2fd2d6dd864a
+
+* Network Plugins | Kubernetes
+
+    https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/
+
+    v1.24 にアップグレードした際,  --network-plugin オプションが廃止されていて kubelet が起動しなかったので, /var/lib/kubelet/kubeadm-flags.env を編集して該当の記載を削除しました。
+
 ### flannel
 
-https://github.com/coreos/flannel
+https://github.com/flannel-io/flannel
+
+flannel のリポジトリはパスが変更になっていました。(古いパスからもリダイレクトされます)
+
+2023年1月現在の最新版の v0.20.2 は起動に失敗したため一旦 v0.16.3 で動作させています。
 
 ### MetalLB
 

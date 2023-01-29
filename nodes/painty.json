@@ -5,30 +5,7 @@
     "ip": "192.168.10.193",
     "timezone": "Asia/Tokyo",
     "master": false,
-    "role": "pitanetes:worker",
-    "use_docker_version": "5:19.03.15~3-0~ubuntu-focal"
-  },
-  "coredns": {
-    "locals": [
-      { "domain": "www.youtube.com", "ip": "127.0.0.1" },
-      { "domain": "www.nicovideo.jp", "ip": "127.0.0.1" },
-      { "domain": "sp.nicovideo.jp", "ip": "127.0.0.1" },
-      { "domain": "m.youtube.com", "ip": "127.0.0.1" },
-      { "domain": "video.fc2.com", "ip": "127.0.0.1" },
-      { "domain": "youtu.be", "ip": "127.0.0.1" },
-      { "domain": "youtube.com", "ip": "127.0.0.1" },
-      { "domain": "www.youtu.be", "ip": "127.0.0.1" },
-      { "domain": "googlevideo.com", "ip": "127.0.0.1" },
-      { "domain": "ytimg.com", "ip": "127.0.0.1" },
-      { "domain": "youtube-ui.l.google.com", "ip": "127.0.0.1" },
-      { "domain": "ytimg.l.google.com", "ip": "127.0.0.1" },
-      { "domain": "ytstatic.l.google.com", "ip": "127.0.0.1" },
-      { "domain": "youtubei.googleapis.com", "ip": "127.0.0.1" }
-    ],
-    "dnsservers": [
-      { "name": "primary dns from isp", "ip": "210.131.159.80" },
-      { "name": "secondary dns from isp", "ip": "175.184.27.70" }
-    ]
+    "role": "pitanetes:worker"
   },
   "recipes": [
     "base.rb",
