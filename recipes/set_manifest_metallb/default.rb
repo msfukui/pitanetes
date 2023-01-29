@@ -6,8 +6,7 @@ user = node[:host][:user]
 loadbalancer_ip_range = node[:metallb][:loadbalancer_ip_range]
 
 # Metallb's manifest URL
-metallb_ns_url = 'https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/namespace.yaml'
-metallb_url    = 'https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/metallb.yaml'
+metallb_url = 'https://raw.githubusercontent.com/metallb/metallb/v0.13.7/config/manifests/metallb-native.yaml'
 
 execute 'Preparation: editing kube-proxy config' do
   command "export KUBECONFIG=/home/#{user}/.kube/config && " \
@@ -20,9 +19,9 @@ execute 'Preparation: editing kube-proxy config' do
     'kubectl diff -f - -n kube-system'
 end
 
-execute 'Installration: kubectl apply -f metallb_ns_url, metallb_url' do
+execute 'Installration: kubectl apply -f metallb_url' do
   command "export KUBECONFIG=/home/#{user}/.kube/config && " \
-    "kubectl apply -f #{metallb_ns_url} && kubectl apply -f #{metallb_url} && " \
+    "kubectl apply -f #{metallb_url} && " \
     'kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"'
   not_if  "export KUBECONFIG=/home/#{user}/.kube/config && " \
     "kubectl get pods --all-namespaces | grep 'metallb-system'"
