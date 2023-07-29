@@ -6,3 +6,5 @@ git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
 gem 'itamae'
 gem 'itamae-secrets'
+gem 'ed25519'
+gem 'bcrypt_pbkdf'
