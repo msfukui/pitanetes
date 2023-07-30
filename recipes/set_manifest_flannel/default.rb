@@ -4,7 +4,7 @@ host = node[:host][:name]
 user = node[:host][:user]
 
 # Flannel's manifest URL
-flannel_url = 'https://raw.githubusercontent.com/flannel-io/flannel/v0.16.3/Documentation/kube-flannel.yml'
+flannel_url = 'https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml'
 
 execute "kubectl apply -f #{flannel_url}" do
   command "export KUBECONFIG=/home/#{user}/.kube/config && " \

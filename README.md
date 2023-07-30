@@ -349,8 +349,6 @@ https://github.com/flannel-io/flannel
 
 flannel のリポジトリはパスが変更になっていました。(古いパスからもリダイレクトされます)
 
-2023年1月現在の最新版の v0.20.2 は起動に失敗したため一旦 v0.16.3 で動作させています。
-
 ### MetalLB
 
 https://metallb.universe.tf
